@@ -10,8 +10,6 @@ def dfs(inorder, depth):
 
     # 해당 깊이에 해당하는 node를 추가한다.
     answer[depth].append(inorder[mid])
-    print(answer)
-
     if len(inorder) == 1:
         return
 

@@ -1,16 +1,7 @@
-# class Node():
-#     def __init__(self, item):
-#         self.data = item
-#         self.right = None
-#         self.left = None
-    
-# class Tree():
-#     def __init__(self):
-#         self.root = None
+import sys
+input = sys.stdin.readline
+sys.setrecursionlimit(10**6)
 
-# tree = Tree()
-# n1 = Node(1)
-# tree.root = n1
 n = int(input())
 arr = [[] for _ in range(n+1)]
 visited = [False] * (n+1)
@@ -26,8 +17,7 @@ def dfs(E,v,visited):
     for i in E[v]:
         if not visited[i]:
             answer[i]=v
-            print(answer)
-            dfs(E, i, visited)
+            dfs(E, i, visited) #노드를 탐색하기 직전의 노드를 부모로 기록
             
 
 dfs(arr,1,visited)
