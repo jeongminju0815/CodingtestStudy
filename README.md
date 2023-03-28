@@ -32,7 +32,7 @@
 | 23.03.22 | Implementation | 구현 | [바로가기](./problem/implementation) | 4396, 1913 |
 | 23.03.23 | String | 문자열 | [바로가기](./problem/string) | 17413, 20210 |
 | 23.03.24 | Trie | 트라이 | [바로가기](./problem/trie) | 14425, 5052 |
-| 23.03.25 | Two Pointers | 투 포인터 | [바로가기](./problem/two_pointers) | 20922, 20366 |
+| 23.03.25 | Two Pointers | 투 포인터 | [바로가기](./problem/two_pointer) | 20922, 20366 |
 | 23.03.26 | Topological Sorting | 위상정렬 | [바로가기](./problem/topological_sorting) | 1766, 2252 |
 | 23.03.27 | Disjoint Set | 분리집합 | [바로가기](./problem/disjoint_set) | 10775, 4195 |
 | 23.03.28 | Minimum Spanning Tree(MST) | 최소 스패닝 트리 | [바로가기](./problem/mst) | 1197, 1647 |
