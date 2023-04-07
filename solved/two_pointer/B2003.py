@@ -1,24 +1,28 @@
 n, m = map(int, input().split())
-a = list(map(int, input().split()))
+arr = list(map(int, input().split()))
 
-sum = a[0]
 left = 0
-right = 1
-cnt = 0
+right = 0
+result = arr[0]
+count = 0
 
-while True:
-    if sum < m:
-        if right < n:
-            sum += a[right]
-            right += 1
-        else:
+while left < n:
+    if result < m:
+        right += 1
+        if right >=n:
             break
-    elif sum == m:
-        cnt += 1
-        sum -= a[left]
-        left += 1
-    else:
-        sum -= a[left]
-        left += 1
-
-print(cnt)
+        result += arr[right]
+    elif result >= m:
+        if result == m:
+            count+=1
+        result -= arr[left]
+        left+=1
+    if left == right:
+        if result == m:
+            count+=1
+        right += 1
+        if right >=n:
+            break
+        result += arr[right]
+        
+print(count)
