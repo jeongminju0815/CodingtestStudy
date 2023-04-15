@@ -1,13 +1,13 @@
-def backtrack(num, m):
-    if len(num) == m:
-        print(" ".join(num))
-        return 
-    for i in range(1, n+1):
-        backtrack(num+[str(i)], m)
+s = []
+def backtracking():
+    if len(s) == m:
+        print(" ".join(map(str, s)))
+        return
     
+    for i in range(1, n+1):
+        s.append(i)
+        backtracking()
+        s.pop()
+
 n, m = map(int, input().split())
-
-for i in range(1, n+1):
-    backtrack([str(i)], m)
-
-
+backtracking()

@@ -1,40 +1,46 @@
-from collections import deque
+from collections import deque, defaultdict
 import heapq
 import sys
-
 input = sys.stdin.readline
 
 n = int(input())
-recom = int(input())
-check = [False] * (recom+1)
-heap = [(0,1001, i) for i in range(recom+1)]
-heap2 = [(0,1001, i) for i in range(recom+1)]
-count = 0
-old = 0
-
+r = int(input())
 student = list(map(int, input().split()))
+recomm = defaultdict(int) #학생번호: 투표수
 
-for s in student:
-    if check[s]:
-        value, o, idx = heap[s]
-        heap[s] = (value+1, o, idx)
+q = []
+photo = []
+
+for i in range(len(student)):
+    if student[i] in photo:
+        recomm[student[i]] += 1
         continue
-    if count >= n:
-        idx = heapq.heappop(heap2)[2]
-        check[idx] = False
+    if len(q) < n:
+        recomm[student[i]] += 1
+        heapq.heappush(q, (recomm[student[i]],i+1, student[i])) #투표수, idx+1(날짜), 학생번호
+        photo.append(student[i]) #포토에 들어간 학생
+    else:
+        #우선순위 큐에서 꺼낸다, 투표수가 dict 투표수랑 같으면 그대로, 다르다면 계속 빼서 같을 때 까지 넣기
+        vote, day, s = heapq.heappop(q)
+        if vote != recomm[s]:
+            while True:
+                heapq.heappush(q, (recomm[s], day, s))
+                vote, day, s = heapq.heappop(q)
+                if vote == recomm[s]:
+                    break
+        recomm[s] = 0
+        photo.remove(s)
+        recomm[student[i]] += 1
+        heapq.heappush(q, (recomm[student[i]],i+1, student[i])) #투표수, idx+1(날짜), 학생번호
+        photo.append(student[i]) #포토에 들어간 학생
 
-        value, _, idx = heap[idx]
-        heap[idx] = (value-1, 10001, idx)
-        count-=1
-    value, o, idx = heap[s]
-    heap[s] = (value+1, old+1, idx)
-    old+=1
-    # heapq.heappush(heap2, (value+1, old,idx))
-    heapq.heapify(heap2)
-    check[s] = True
-    count+=1
-    print(heap)
-print(heap,heap2)
-for i in range(len(check)):
-    if check[i]:
-        print(i, end=" ")
+    # print(recomm, photo, q)
+for key, value in sorted(recomm.items()):
+    if value != 0:
+        print(key, end=" ")
+                
+
+
+
+        
+

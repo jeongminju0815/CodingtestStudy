@@ -14,7 +14,6 @@ def n_queens(x):
     global ans
     if x == n: #row를 n번 다 돌 수 있었던 경우
         ans += 1
-        print(row)
         return
 
     else:
