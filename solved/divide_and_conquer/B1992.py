@@ -1,15 +1,9 @@
 def divide(m, row, col):
-    if m == 1:
-        result.append(arr[row][col])
-        return
-
     temp = arr[row][col]
 
     for i in range(row, row+m):
         for j in range(col, col+m):
-            if arr[i][j] == temp:
-                visited[i][j] = True
-            if arr[i][j] != temp and not visited[i][j]:
+            if arr[i][j] != temp:
                 result.append("(")
                 divide(m//2, row, col)
                 divide(m//2, row, col + m//2)
@@ -22,7 +16,6 @@ def divide(m, row, col):
 
 m = int(input())
 arr = []
-visited = [[False]*m for i in range(m)]
 for i in range(m):
     arr.append(input())
 
